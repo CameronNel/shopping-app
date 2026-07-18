@@ -93,6 +93,11 @@ The chibi mascot and background art are **not** in the repo yet — the files in
 The app detects placeholders and shows an emoji instead, so it looks fine until
 then.
 
+## Contributing
+
+Pull requests are always merged directly — never left as drafts and never
+staged on an intermediate branch.
+
 ## Building for the Play Store
 
 ```bash
