@@ -85,7 +85,7 @@ export default function ShopScreen() {
     return (
       <Screen>
         <Header title="Trip complete" />
-        <MascotTip pose="thumbsup" text="Goed gedaan! Everything's banked into your weekly summary. Anything you marked unavailable is already waiting on your next list." />
+        <MascotTip pose="thumbsup" text="Well done! Everything's banked into your weekly summary. Anything you marked unavailable is already waiting on your next list." />
         <Card style={{ alignItems: 'center', paddingVertical: spacing.xxl }}>
           <Text style={{ fontSize: 40 }}>🎉</Text>
           <Text style={[type.small, { marginTop: spacing.md }]}>You spent</Text>

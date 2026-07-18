@@ -19,18 +19,46 @@ const POSES: Record<MascotPose, ImageSourcePropType> = {
  * render as an invisible 72px gap, so until the real images are dropped in we
  * show an emoji instead. Self-corrects the moment the art lands.
  */
-const hasRealArt = (() => {
-  // resolveAssetSource is native-only — react-native-web doesn't implement it.
-  // On web we optimistically assume real art; the emoji fallback is a
-  // native-only nicety, not a correctness concern.
-  try {
-    const src = Image.resolveAssetSource?.(POSES.wave);
-    if (!src) return true;
-    return src.width > 1 && src.height > 1;
-  } catch {
-    return true;
+let hasRealArtPromise: Promise<boolean> | null = null;
+
+function checkHasRealArt(): Promise<boolean> {
+  if (!hasRealArtPromise) {
+    hasRealArtPromise = new Promise((resolve) => {
+      // resolveAssetSource gives us width/height straight from the asset
+      // registry on native, no network round trip needed.
+      try {
+        const src = Image.resolveAssetSource?.(POSES.wave);
+        if (src) {
+          resolve(src.width > 1 && src.height > 1);
+          return;
+        }
+      } catch {
+        resolve(true);
+        return;
+      }
+      // react-native-web doesn't implement resolveAssetSource, but require()
+      // there already resolves to a {uri, width, height} object — no need
+      // for a getSize round trip if the dimensions are already on it.
+      const asset = POSES.wave as unknown;
+      if (asset && typeof asset === 'object' && typeof (asset as any).width === 'number') {
+        const { width, height } = asset as { width: number; height: number };
+        resolve(width > 1 && height > 1);
+        return;
+      }
+      const uri = typeof asset === 'string' ? asset : (asset as any)?.uri;
+      if (!uri) {
+        resolve(true);
+        return;
+      }
+      Image.getSize(
+        uri,
+        (width, height) => resolve(width > 1 && height > 1),
+        () => resolve(true),
+      );
+    });
   }
-})();
+  return hasRealArtPromise;
+}
 
 export function MascotTip({
   pose = 'wave',
@@ -44,6 +72,9 @@ export function MascotTip({
 }) {
   const showMascot = useAppStore((s) => s.settings.showMascot);
   const [dismissed, setDismissed] = useState(false);
+  // Default to the emoji fallback so a broken/placeholder image is never
+  // shown, even briefly, while the real check resolves.
+  const [hasRealArt, setHasRealArt] = useState(false);
   const anim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -54,6 +85,16 @@ export function MascotTip({
       tension: 60,
     }).start();
   }, [anim]);
+
+  useEffect(() => {
+    let cancelled = false;
+    checkHasRealArt().then((result) => {
+      if (!cancelled) setHasRealArt(result);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   if (!showMascot || dismissed) return null;
 
