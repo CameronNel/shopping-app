@@ -110,7 +110,7 @@ export default function ListScreen() {
   const addCustom = () => {
     const name = query.trim();
     if (!name) return;
-    const id = addCustomItem(name, category ?? 'overig', 'stuks');
+    const id = addCustomItem(name, category ?? 'overig', 'pcs');
     addItem(id, { store: storeFilter });
     setQuery('');
   };
@@ -122,7 +122,7 @@ export default function ListScreen() {
       {activeItems.length === 0 ? (
         <MascotTip
           pose="wave"
-          text="Hoi! Search the item bank below, or tap a category to browse. Anything not in there, just type it and hit Add custom."
+          text="Hi! Search the item bank below, or tap a category to browse. Anything not in there, just type it and hit Add custom."
           dismissKey="list-empty"
         />
       ) : null}
@@ -131,7 +131,7 @@ export default function ListScreen() {
       <Field
         value={query}
         onChangeText={setQuery}
-        placeholder="Search 350+ items… (melk, brood, kip)"
+        placeholder="Search 350+ items… (milk, bread, chicken)"
       />
 
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={s.filterRow}>

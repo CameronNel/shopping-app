@@ -14,20 +14,20 @@ export const STORE_BY_ID: Record<StoreId, Store> = Object.fromEntries(
 ) as Record<StoreId, Store>;
 
 export const CATEGORIES: Category[] = [
-  { id: 'groente-fruit', name: 'Groente & Fruit', emoji: '🥬' },
-  { id: 'vlees-vis', name: 'Vlees & Vis', emoji: '🍗' },
-  { id: 'zuivel', name: 'Zuivel & Eieren', emoji: '🥛' },
-  { id: 'brood', name: 'Brood & Banket', emoji: '🍞' },
-  { id: 'kaas-beleg', name: 'Kaas & Beleg', emoji: '🧀' },
-  { id: 'voorraadkast', name: 'Voorraadkast', emoji: '🥫' },
-  { id: 'diepvries', name: 'Diepvries', emoji: '🧊' },
-  { id: 'dranken', name: 'Dranken', emoji: '🧃' },
-  { id: 'snoep-snacks', name: 'Snoep & Snacks', emoji: '🍫' },
-  { id: 'huishouden', name: 'Huishouden', emoji: '🧽' },
-  { id: 'verzorging', name: 'Verzorging', emoji: '🧴' },
+  { id: 'groente-fruit', name: 'Vegetables & Fruit', emoji: '🥬' },
+  { id: 'vlees-vis', name: 'Meat & Fish', emoji: '🍗' },
+  { id: 'zuivel', name: 'Dairy & Eggs', emoji: '🥛' },
+  { id: 'brood', name: 'Bread & Pastries', emoji: '🍞' },
+  { id: 'kaas-beleg', name: 'Cheese & Deli', emoji: '🧀' },
+  { id: 'voorraadkast', name: 'Pantry', emoji: '🥫' },
+  { id: 'diepvries', name: 'Frozen', emoji: '🧊' },
+  { id: 'dranken', name: 'Drinks', emoji: '🧃' },
+  { id: 'snoep-snacks', name: 'Sweets & Snacks', emoji: '🍫' },
+  { id: 'huishouden', name: 'Household', emoji: '🧽' },
+  { id: 'verzorging', name: 'Personal Care', emoji: '🧴' },
   { id: 'baby', name: 'Baby', emoji: '🍼' },
-  { id: 'huisdier', name: 'Huisdier', emoji: '🐾' },
-  { id: 'overig', name: 'Overig', emoji: '📦' },
+  { id: 'huisdier', name: 'Pets', emoji: '🐾' },
+  { id: 'overig', name: 'Other', emoji: '📦' },
 ];
 
 export const CATEGORY_BY_ID = Object.fromEntries(
