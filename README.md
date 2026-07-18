@@ -87,12 +87,9 @@ the app makes is fetching the public deals JSON.
 
 ## Artwork
 
-The chibi mascot is in — `assets/mascot/*.png` has the four poses (wave,
-basket, thinking, thumbsup). The background wash (`assets/bg-theme.png`) is
-still a 1×1 transparent placeholder; see
-[assets/mascot/README.md](assets/mascot/README.md) for what to drop in there.
-The app detects placeholder art and shows an emoji instead, so nothing breaks
-in the meantime.
+The chibi mascot (`assets/mascot/*.png` — wave, basket, thinking, thumbsup)
+and the background wash (`assets/bg-theme.png`, a seamless tiling pastel cat
+pattern rendered via `resizeMode="repeat"` in `Screen`) are both in.
 
 ## Contributing
 
