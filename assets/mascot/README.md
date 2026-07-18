@@ -10,9 +10,10 @@ renders a placeholder bubble until they exist, so nothing breaks in the meantime
 | `thinking.png` | Finger to chin, holding the notepad                        | Deals tab, prompts to set a price             |
 | `thumbsup.png` | Thumbs up with the paper grocery bag                       | Trip complete, checkout, positive summaries   |
 
-Also place the pastel kitten/shopping-bag artwork at `assets/bg-theme.png` — it's
-used as the app background wash.
+The pastel kitten background wash lives at `assets/bg-theme.png` — a seamless
+tiling pattern, rendered opaque and repeating (not stretched) via
+`resizeMode="repeat"` in `Screen` (`src/components/ui.tsx`).
 
-Recommended: trim to the character, transparent background, ~512px on the long
-edge. The originals are square with a white background; removing the background
-makes them sit properly on the pink wash.
+Recommended for the character poses: trim to the character, transparent
+background, ~512px on the long edge. The originals are square with a white
+background; removing the background makes them sit properly on the pink wash.

@@ -1,5 +1,6 @@
 ﻿import { ReactNode } from 'react';
 import {
+  ImageBackground,
   Pressable,
   ScrollView,
   StyleProp,
@@ -17,15 +18,21 @@ import { colors, radius, shadow, spacing, type } from '@/theme';
 export function Screen({ children, scroll = true }: { children: ReactNode; scroll?: boolean }) {
   const Body = scroll ? ScrollView : View;
   return (
-    <SafeAreaView style={s.screen} edges={['top', 'left', 'right']}>
-      <Body
-        style={s.body}
-        contentContainerStyle={scroll ? s.bodyContent : undefined}
-        keyboardShouldPersistTaps="handled"
-      >
-        {children}
-      </Body>
-    </SafeAreaView>
+    <ImageBackground
+      source={require('../../assets/bg-theme.png')}
+      resizeMode="repeat"
+      style={s.screen}
+    >
+      <SafeAreaView style={s.screenSafeArea} edges={['top', 'left', 'right']}>
+        <Body
+          style={s.body}
+          contentContainerStyle={scroll ? s.bodyContent : undefined}
+          keyboardShouldPersistTaps="handled"
+        >
+          {children}
+        </Body>
+      </SafeAreaView>
+    </ImageBackground>
   );
 }
 
@@ -189,6 +196,7 @@ export function Row({
 
 const s = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.bg },
+  screenSafeArea: { flex: 1 },
   body: { flex: 1 },
   bodyContent: { padding: spacing.lg, paddingBottom: spacing.xxl * 2.5 },
   header: { marginBottom: spacing.lg },
