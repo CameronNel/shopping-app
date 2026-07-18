@@ -1,0 +1,123 @@
+{
+  "generatedAt": "2026-07-18T00:00:00.000Z",
+  "stores": {
+    "ah": { "ok": true, "count": 3 },
+    "jumbo": { "ok": true, "count": 2 },
+    "dirk": { "ok": true, "count": 2 },
+    "lidl": { "ok": true, "count": 1 },
+    "aldi": { "ok": true, "count": 1 },
+    "plus": { "ok": true, "count": 1 }
+  },
+  "deals": [
+    {
+      "id": "seed-ah-1",
+      "store": "ah",
+      "title": "AH Halfvolle melk 1L",
+      "offer": "2 voor €2,50",
+      "price": 1.25,
+      "originalPrice": 1.45,
+      "category": "zuivel",
+      "validFrom": "2026-07-13",
+      "validTo": "2026-07-19"
+    },
+    {
+      "id": "seed-ah-2",
+      "store": "ah",
+      "title": "Kipfilet 500g",
+      "offer": "2e halve prijs",
+      "price": 4.99,
+      "originalPrice": 6.49,
+      "category": "vlees-vis",
+      "validFrom": "2026-07-13",
+      "validTo": "2026-07-19"
+    },
+    {
+      "id": "seed-ah-3",
+      "store": "ah",
+      "title": "Aardbeien 400g",
+      "offer": "25% korting",
+      "price": 2.24,
+      "originalPrice": 2.99,
+      "category": "groente-fruit",
+      "validFrom": "2026-07-13",
+      "validTo": "2026-07-19"
+    },
+    {
+      "id": "seed-jumbo-1",
+      "store": "jumbo",
+      "title": "Jumbo Bruin brood",
+      "offer": "1 + 1 gratis",
+      "price": 1.39,
+      "originalPrice": 1.39,
+      "category": "brood",
+      "validFrom": "2026-07-13",
+      "validTo": "2026-07-19"
+    },
+    {
+      "id": "seed-jumbo-2",
+      "store": "jumbo",
+      "title": "Griekse yoghurt 1kg",
+      "offer": "€1,00 korting",
+      "price": 2.29,
+      "originalPrice": 3.29,
+      "category": "zuivel",
+      "validFrom": "2026-07-13",
+      "validTo": "2026-07-19"
+    },
+    {
+      "id": "seed-dirk-1",
+      "store": "dirk",
+      "title": "Rundergehakt 500g",
+      "offer": "Nu €3,49",
+      "price": 3.49,
+      "originalPrice": 4.79,
+      "category": "vlees-vis",
+      "validFrom": "2026-07-13",
+      "validTo": "2026-07-19"
+    },
+    {
+      "id": "seed-dirk-2",
+      "store": "dirk",
+      "title": "Spa Blauw 6-pack",
+      "offer": "2 voor €5,00",
+      "price": 2.5,
+      "originalPrice": 3.29,
+      "category": "dranken",
+      "validFrom": "2026-07-13",
+      "validTo": "2026-07-19"
+    },
+    {
+      "id": "seed-lidl-1",
+      "store": "lidl",
+      "title": "Verse zalmfilet 300g",
+      "offer": "30% korting",
+      "price": 4.19,
+      "originalPrice": 5.99,
+      "category": "vlees-vis",
+      "validFrom": "2026-07-13",
+      "validTo": "2026-07-19"
+    },
+    {
+      "id": "seed-aldi-1",
+      "store": "aldi",
+      "title": "Aardappelen 2.5kg",
+      "offer": "Nu €2,29",
+      "price": 2.29,
+      "originalPrice": 3.19,
+      "category": "groente-fruit",
+      "validFrom": "2026-07-13",
+      "validTo": "2026-07-19"
+    },
+    {
+      "id": "seed-plus-1",
+      "store": "plus",
+      "title": "Belegen kaas 500g",
+      "offer": "2e gratis",
+      "price": 4.49,
+      "originalPrice": 4.49,
+      "category": "kaas-beleg",
+      "validFrom": "2026-07-13",
+      "validTo": "2026-07-19"
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+# Shopping List
+
+A mobile-first Dutch grocery shopping app. Build a list from a searchable item
+bank, see this week's supermarket deals, then shop it store by store with
+cross-store tick-off — mark something picked up at Dirk and it clears from the
+Albert Heijn list and the aggregate at the same time.
+
+Built with Expo (React Native) + expo-router. Android first, iOS from the same
+codebase.
+
+## Running it
+
+```bash
+npm install
+npx expo start          # then scan the QR with Expo Go
+```
+
+| Script                 | What it does                                              |
+| ---------------------- | --------------------------------------------------------- |
+| `npm run typecheck`    | TypeScript, no emit                                        |
+| `npm run verify`       | Exercises the store logic headlessly (10 checks)           |
+| `npm run scrape`       | Runs the deal scrapers locally, writes `data/deals.json`    |
+| `npm run placeholders` | Regenerates placeholder art files                          |
+
+## The four tabs
+
+**List** — search ~350 Dutch grocery items across 14 categories, filter by
+category or store, add custom items, set a price per item per store, see live
+deals and your frequently-bought items, and read a running estimated total.
+Group the list by aisle or by store.
+
+**Shop** — work the list with a progress bar. Switch between an "Everything"
+view and a per-store view; a store view also shows unassigned items, so you can
+grab anything wherever you are. Each item can be ticked off, marked *not
+available* (carries over to the next trip), or *no longer needed* (dropped).
+Prices can be corrected inline before checkout.
+
+**Summary** — weekly spend with a week-over-week delta, optional budget bar,
+spend split by store, biggest line items, and recent trip history.
+
+**Settings** — enable/disable stores, refresh deals with per-store status,
+weekly budget, mascot and haptics toggles, and data management.
+
+## How the deals feed works (no server, no cost)
+
+There is no backend. `.github/workflows/deals.yml` runs nightly on GitHub
+Actions, scrapes each chain, and commits `data/deals.json` to this repo. The app
+reads that file from `raw.githubusercontent.com`.
+
+Failure handling is layered, because these are undocumented endpoints that will
+break eventually:
+
+1. Each store is scraped independently. One failing doesn't stop the others.
+2. A failed store carries its previous deals forward and is flagged `ok: false`
+   in the feed — visible in Settings as a red dot.
+3. The app falls back live feed → last good cached feed → bundled seed, so the
+   deals tab is never empty even on a fresh install with no connection.
+4. If the whole run fails, the workflow opens a GitHub issue.
+
+Worst case is stale deals, never a broken app.
+
+### Store coverage
+
+Albert Heijn and Jumbo use their mobile APIs and are the most reliable. Dirk,
+Lidl, Aldi and PLUS parse their web folders and are more fragile by nature.
+
+## Data & privacy
+
+Everything lives on the device via AsyncStorage — list, prices, custom items,
+trip history. No accounts, no sync, nothing uploaded. The only network request
+the app makes is fetching the public deals JSON.
+
+## Artwork
+
+The chibi mascot and background art are **not** in the repo yet — the files in
+`assets/` are 1×1 transparent placeholders so the bundler resolves. See
+[assets/mascot/README.md](assets/mascot/README.md) for the filenames to drop in.
+The app detects placeholders and shows an emoji instead, so it looks fine until
+then.
+
+## Building for the Play Store
+
+```bash
+npm install -g eas-cli
+eas login
+eas build --platform android --profile production
+```
+
+Note: `npx expo export` fails locally on Windows because the bundled `hermesc`
+can't compile the private class fields React Native itself ships. EAS builds on
+Linux are unaffected.
