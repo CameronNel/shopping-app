@@ -59,10 +59,25 @@ break eventually:
 
 Worst case is stale deals, never a broken app.
 
-### Store coverage
+### Store coverage — current reality
 
-Albert Heijn and Jumbo use their mobile APIs and are the most reliable. Dirk,
-Lidl, Aldi and PLUS parse their web folders and are more fragile by nature.
+| Store         | Deals feed | Notes                                                                    |
+| ------------- | ---------- | ------------------------------------------------------------------------ |
+| Albert Heijn  | ✅ working  | ~1,200 live bonus products via the mobile product search API             |
+| Jumbo         | ❌          | `mobileapi.jumbo.com` sits behind Akamai bot protection, 404s to scripts  |
+| Dirk          | ❌          | no verified public endpoint yet                                          |
+| Lidl          | ❌          | no verified public endpoint yet                                          |
+| Aldi          | ❌          | no verified public endpoint yet                                          |
+| PLUS          | ❌          | no verified public endpoint yet                                          |
+
+All six stores are fully usable everywhere else in the app — lists, per-store
+tick-off, the price book, totals and the weekly summary don't depend on the
+deals feed. Only the deals carousel is Albert Heijn-only for now.
+
+The unimplemented scrapers throw a descriptive error rather than pretending to
+work, so Settings shows an honest red dot per store. Note that AH's own
+`bonuspage` API (which the popular community libraries still use) has been
+retired — that path returns 500 and is not worth reviving.
 
 ## Data & privacy
 
