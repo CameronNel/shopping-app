@@ -87,11 +87,12 @@ the app makes is fetching the public deals JSON.
 
 ## Artwork
 
-The chibi mascot and background art are **not** in the repo yet — the files in
-`assets/` are 1×1 transparent placeholders so the bundler resolves. See
-[assets/mascot/README.md](assets/mascot/README.md) for the filenames to drop in.
-The app detects placeholders and shows an emoji instead, so it looks fine until
-then.
+The chibi mascot is in — `assets/mascot/*.png` has the four poses (wave,
+basket, thinking, thumbsup). The background wash (`assets/bg-theme.png`) is
+still a 1×1 transparent placeholder; see
+[assets/mascot/README.md](assets/mascot/README.md) for what to drop in there.
+The app detects placeholder art and shows an emoji instead, so nothing breaks
+in the meantime.
 
 ## Contributing
 
