@@ -1,9 +1,10 @@
 {
-  "generatedAt": "2026-07-23T06:40:07.997Z",
+  "generatedAt": "2026-07-24T06:39:12.267Z",
   "stores": {
     "ah": {
-      "ok": true,
-      "count": 1053
+      "ok": false,
+      "count": 1053,
+      "error": "AH returned no dated bonus products"
     },
     "jumbo": {
       "ok": false,
