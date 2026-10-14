@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-13T11:46:30.771Z",
+  "generatedAt": "2026-10-14T09:30:04.866Z",
   "stores": {
     "ah": {
       "ok": false,
       "count": 1198,
-      "error": "https://api.ah.nl/mobile-auth/v1/auth/token/anonymous → HTTP 403"
+      "error": "https://api.ah.nl/mobile-auth/v1/auth/token/anonymous → HTTP 503"
     },
     "jumbo": {
       "ok": false,
